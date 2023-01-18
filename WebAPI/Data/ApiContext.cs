@@ -1,22 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Models;
 
-namespace WebAPI.Data
+namespace WebAPI.Data;
+
+public class ApiContext : DbContext
 {
-    public class APIContext : DbContext
+    public ApiContext(DbContextOptions<ApiContext> options) : base(options)
     {
-        public APIContext (DbContextOptions<APIContext> options)
-            : base(options)
-        {
-        }
-
-        public DbSet<WebAPI.Models.Product> Product { get; set; } = default!;
-        
-        public DbSet<WebAPI.Models.Category> Categories { get; set; } = default!;
-
     }
+
+    public DbSet<Product> Products { get; set; } = default!;
+
+    public DbSet<Category> Categories { get; set; } = default!;
 }
